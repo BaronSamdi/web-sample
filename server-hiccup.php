@@ -1,19 +1,3 @@
-<!-- TBD impl & test auto ver -->
-<!-- ?php 
-
-function autoVer($url){
-	$path = pathinfo($url);
-	$ver = '.'.filemtime($_SERVER['DOCUMENT_ROOT'].$url).'.';
-	echo $path['dirname'].'/'.str_replace('.', $ver, $path['basename']);
-}
-
-include($_SERVER['DOCUMENT_ROOT'].'/path/to/autoVer.php');
-
-? -->
-
-<!-- link rel="stylesheet" href="<!-- ?php autoVer('/webApp/css/style.css'); ?>" type="text/css" />
-<script type="text/javascript" src="<!-- ?php autoVer('/scripts/prototype.js'); ?>"></script  -->
-
 <!DOCTYPE html>
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
@@ -64,7 +48,7 @@ include($_SERVER['DOCUMENT_ROOT'].'/path/to/autoVer.php');
 <link rel="stylesheet" type="text/css" href="webApp/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css"
 	href="webApp/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/css?family=Lily+Script+One"
+<link href="//fonts.googleapis.com/css?family=Lily+Script+One"
 	rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="webApp/css/login.css" />
 <style>
@@ -144,7 +128,8 @@ a.login-p{
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="webApp/js/jquery-11.0.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="http://www.photomyne.com/webApp/js/jquery-11.0.min.js"><\/\script>');</script>
 	<script type="text/javascript" src="webApp/js/external.min.js"></script>
 		<script type="text/javascript">
 //Fix for Facebook login bug that concats #_=_ to url

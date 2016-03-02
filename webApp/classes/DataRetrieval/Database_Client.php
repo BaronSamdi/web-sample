@@ -62,9 +62,6 @@ error_reporting(E_ALL);
 				'ExpressionAttributeValues' => [
 				':v_email' => ['S' => $email]
 				],
-				'ProjectionExpression' => MEMBER_USER_ID .',' . MEMBER_PASSWORD .',' . MEMBER_USER_EMAIL
-				. ',' . MEMBER_FIRST_NAME . ',' . MEMBER_LAST_NAME. ',' . MEMBER_FB_BUSINESS_TOKEN 
-				. ',' . MEMBER_IS_PREMIUM_USER,
 				'ScanIndexForward' => false													       																																				
 			]);						
 		}
@@ -99,8 +96,6 @@ error_reporting(E_ALL);
 				'ExpressionAttributeValues' => [
 				':v_fb_Business_Token' => ['S' => $fb_Business_Token]
 				],
-				'ProjectionExpression' => MEMBER_USER_ID . ',' . MEMBER_FB_BUSINESS_TOKEN . ',' . MEMBER_FB_NAME 
-				. ',' . MEMBER_IS_PREMIUM_USER,
 				'ScanIndexForward' => false													       																																				
 			]);	
 		}
@@ -175,4 +170,44 @@ error_reporting(E_ALL);
 		}
 		return $result;				
 	}
+	
+	
+	
+	
+	/*
+	 * Fecth user data from DB, where key is user ID
+	*
+	* @param - string user user ID
+	* @return - dynamoDB query Object, false if DynamoDbException is thrown.
+	*/
+	static function get_user_Info_By_userID($userID){
+	
+		try {
+	
+			self::initialize();
+	
+			$result = self::$dynamoDB_client->query([
+					'TableName' => DB_USERS_TABLE,
+					
+	
+					'KeyConditionExpression' => MEMBER_USER_ID .' = :v_userID',
+					'ExpressionAttributeValues' => [
+					':v_userID' => ['S' => $userID]
+					],
+					'ScanIndexForward' => false
+					]);
+		}
+	
+		catch(DynamoDbException $e){
+	
+			error_log($e->getMessage());
+			return false;
+		}
+	
+		return $result;
+	
+	}
+	
+	
+	
 }

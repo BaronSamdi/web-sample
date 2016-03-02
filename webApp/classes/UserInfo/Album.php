@@ -36,6 +36,7 @@ class Album extends AbstractUserAlbum {
 		else
 			$this->album_location = "";
 		
+		// TBD - get from DB a predesignated album cover photo
 		$this->album_cover_img_url = "";		
 		
 		if(!$dynamoDB_photos_arr){

@@ -1816,8 +1816,9 @@ hr {
 
 
 .container.grid-container{
-		padding-right: 5%;
-	    padding-left: 5%;	    
+	padding-right: 5%;
+    padding-left: 5%;
+    width: 80vw;	    
 }
 
 	
@@ -1831,8 +1832,8 @@ hr {
 
 @media screen and (min-width: 1800px){
 	.container.grid-container{
-		padding-right: 0%;
-	    padding-left: 0%;	    
+		padding-right: 5%;
+	    padding-left: 5%;	    
 	}
 
 }
@@ -1912,6 +1913,20 @@ ul.no-cssanimations.grid li,
 	    width: 100%;
 	}
 
+@media screen and (max-width: 1024px) {	
+
+	.container.grid-container {
+	    padding-right: 0%;
+	    padding-left: 0%;
+	    width: 90vw;
+	}
+	
+	.grid {
+	    min-width: 70vw;
+	    margin-left: -7px;
+	}
+
+}
 
 @media screen and (max-width: 900px) {
 		
@@ -2228,11 +2243,6 @@ ul.no-cssanimations.grid li,
 	} 
 }
 
-.container.grid-container{
-	padding-right: 5%;
-    padding-left: 5%;
-    width: 80vw;	    
-}
 
 .grid-item {
   float: left;

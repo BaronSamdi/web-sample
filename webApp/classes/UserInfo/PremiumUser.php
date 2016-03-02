@@ -97,7 +97,7 @@ class PremiumUser extends AbstractUser{
 				
 				$photo->set_photo_thumbnail_url($img_thumb_url);												
 				
-				// set album cover photo
+				// set album cover photo if none exists
 				if(empty($this->user_albums_arr[$curr_AlbumId]->get_cover_img_url()))
 					$this->user_albums_arr[$curr_AlbumId]->set_album_cover_img_url($this->get_photo_url(
 						$photo->get_photo_ID(), $album_photos_urls, PHOTO_THUMB_URL));

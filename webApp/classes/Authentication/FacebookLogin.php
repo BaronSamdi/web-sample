@@ -57,23 +57,26 @@ class FacebookLogin {
 		  exit;
 		}
 		
+		// If we were denied access by user, or fail to get access token, log error and return to
+		// public base url
 		if ( !isset($accessToken)) {
-		  if ($this->helper->getError()) {
-			header('HTTP/1.0 401 Unauthorized');
-			error_log("Error: " . $this->helper->getError(). "\n");
-			error_log("Error Code: " . $this->helper->getErrorCode() . "\n");
-			error_log("Error Reason: " . $this->helper->getErrorReason() . "\n");
-			error_log("Error Description: " . $this->helper->getErrorDescription() . "\n");
-			throw new \Exception('Facebook SDK returned an error: ' . $e->getMessage());
-			
-		  } else {
-			header('HTTP/1.0 400 Bad Request');
-			error_log("Facebook SDK returned HTTP/1.0 400 Bad Request.\n");
-			throw new \Exception('Facebook SDK returned HTTP/1.0 400 Bad Request: ' . $e->getMessage());			
-		  }
 		  
-		  // If we failed to get access by user, or technical fail, return to
-		  // public page
+			if ($this->helper->getError()) {
+				header('HTTP/1.0 401 Unauthorized');
+				error_log("Error: " . $this->helper->getError());
+				error_log("Error Code: " . $this->helper->getErrorCode());
+				error_log("Error Reason: " . $this->helper->getErrorReason());
+				error_log("Error Description: " . $this->helper->getErrorDescription());
+				header('location: '. PUBLIC_LOGIN_URL);			
+				exit;
+			
+		  	}else {
+				header('HTTP/1.0 400 Bad Request');
+				error_log("Facebook SDK returned HTTP/1.0 400 Bad Request.\n");
+				header('location: '. PUBLIC_LOGIN_URL);			
+				exit;
+		  	}
+		  		  
 		  header('location: '. PUBLIC_LOGIN_URL);
 		  exit;
 		}							
@@ -103,11 +106,11 @@ class FacebookLogin {
 		if (! $accessToken->isLongLived()) {
 		  // Exchanges a short-lived access token for a long-lived one
 		  try {
-			$accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
+				$accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
 		  } catch (Facebook\Exceptions\FacebookSDKException $e) {
-			error_log('Error getting long-lived access token: ' . $this->helper->getMessage());
-			throw new \Exception('Error getting long-lived access token: ' . $this->helper->getMessage());
-			exit;
+				error_log('Error getting long-lived access token: ' . $this->helper->getMessage());
+				throw new \Exception('Error getting long-lived access token: ' . $this->helper->getMessage());
+				exit;
 		  }				 
 		}
 		

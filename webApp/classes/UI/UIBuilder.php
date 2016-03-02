@@ -389,6 +389,9 @@ class UIBuilder {
 	*/
 	public function verify_is_album($albumId){
 		
+		if (!$this->user)
+			header('location: '. PUBLIC_BASE_URL);
+		
 		$album_ids = $this->user->get_all_albums_ids();
 		if(!isset($album_ids[$albumId])){
 			header('location: '. PUBLIC_404_URL);
@@ -404,7 +407,7 @@ class UIBuilder {
 			<div id="footer-bottom">
 				<h5>
 					<a id="footer-homepage-link" target="_blank"
-					href="http://www.photomyne.com/">Photomyne</a>&nbsp;&copy;&nbsp;'
+					href="' . PUBLIC_BASE_URL . '">Photomyne</a>&nbsp;&copy;&nbsp;'
 							. date("Y") . '&nbsp All
 						Rights Reserved
 				</h5>
@@ -439,15 +442,15 @@ class UIBuilder {
 		
 		switch($pageName){
 			case "album":
-				$mobile_back_arrow_address = "my-albums.php";
+				$mobile_back_arrow_address = PUBLIC_BASE_URL . 'my-albums.php';
 				break;
 					
 			case "my-albums":
-				$mobile_back_arrow_address = "";
+				$mobile_back_arrow_address = PUBLIC_BASE_URL;
 				break;
 					
 			default:
-				$mobile_back_arrow_address = "";
+				$mobile_back_arrow_address = PUBLIC_BASE_URL;
 				break;
 		}
 		
@@ -476,7 +479,7 @@ class UIBuilder {
 										 		class="fa fa-medium"></i></a>		
 										 		</div>
 										 		<div class="col-lg-4 col-md-4 col-sm-4 logo-col">
-										 		<a href="http://www.photomyne.com/"><img class="logo"
+										 		<a href="' . PUBLIC_BASE_URL . '"><img class="logo"
 										 				src="webApp/css/styleImages/logox2.png"></a>
 										 				</div>
 										 				<div class="col-lg-4 col-md-4 col-sm-4 topRightLinks">										 				
@@ -496,13 +499,13 @@ class UIBuilder {
 								<div id="mobile-logout-row" class="row mobile-logout-div-closed">
 									<div class="col-xs-4 mobile-logout-col">
 										<div class="mobile-back-icon-holder">
-											<a class="icon-a" href="http://www.photomyne.com/' . $mobile_back_arrow_address .'"><span class="icon-backicon"></span></a>
+											<a class="icon-a" href="' . $mobile_back_arrow_address .'"><span class="icon-backicon"></span></a>
 		
 										</div>
 									</div>
 									
 									<div class="col-xs-4 nav-logo">
-										<a href="http://www.photomyne.com/"><img
+										<a href="' . PUBLIC_BASE_URL . '"><img
 											class="logo" src="webApp/css/styleImages/logox2.png"></a>		
 									</div>
 									<div class="col-xs-4 nav-user">

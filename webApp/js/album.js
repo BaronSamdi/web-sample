@@ -115,7 +115,7 @@ function set_side_scroll(){
 	var DOM_IMG_ELEMS_ARRAY = document.getElementsByClassName('imgSrc');
 	var NUMBER_OF_DOM_IMG_ELEMS = DOM_IMG_ELEMS_ARRAY.length;	
 	
-	if (!setSidescroll && $(window).width() > 767 && window.pageYOffset > 8 * $(window).height()) {
+	if (!setSidescroll && $(window).width() > 1024 && window.pageYOffset > 8 * $(window).height()) {
 		
 		setSidescroll = true;
 		
@@ -136,7 +136,7 @@ function set_side_scroll(){
 						
 	}
 	else{		
-		if(!setSidescroll && NUMBER_OF_DOM_IMG_ELEMS > 15){
+		if(!setSidescroll && NUMBER_OF_DOM_IMG_ELEMS > 15 && $(window).width() > 1024){
 			
 			activateScrollTo();
 			

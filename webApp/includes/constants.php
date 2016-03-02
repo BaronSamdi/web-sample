@@ -97,6 +97,12 @@ define('MEMBER_FB_ID', 'FBId'); // Session var
  * @const user Facebook email.
  */
 define('MEMBER_FB_EMAIL', 'FBemail'); // Session var
+/**
+ * @const user admin login session.
+ */
+define('ADMIN_IS_LOGGED_IN', 'admin_is_logged_in'); // Session var
+
+
 
 
 /******************* Database table attributes names *****************/
@@ -172,7 +178,46 @@ define('MEMBER_ALBUM_EXTRACTED_PHOTOS', 'AlbumExtractedPhotos'); // DB attribute
  * @const premium user backupPlan.
  */
 define('PREMIUM_TIER_MEMBER', 'PREMIUM_TIER'); // DB attribute only
-
+/**
+ * @const user backupPlan.
+ */
+define('MEMBER_BACKUP_PLAN', 'BackupPlan'); // DB attribute only
+/**
+ * @const user device.
+ */
+define('MEMBER_DEVICE', 'Device'); // DB attribute only
+/**
+ * @const user app version.
+ */
+define('MEMBER_APP_VERSION', 'AppVersion'); // DB attribute only
+/**
+ * @const user country.
+ */
+define('MEMBER_COUNTRY', 'Country'); // DB attribute only
+/**
+ * @const user verified.
+ */
+define('MEMBER_VERIFIED', 'Verified'); // DB attribute only
+/**
+ * @const user country.
+ */
+define('MEMBER_EVENTS', 'Events'); // DB attribute only
+/**
+ * @const user upload in Progress.
+ */
+define('MEMBER_UPLOAD_IN_PROGRESS', 'UploadInProgress'); // DB attribute only
+/**
+ * @const user app name.
+ */
+define('MEMBER_APP_NAME', 'AppName'); // DB attribute only
+/**
+ * @const user app name.
+ */
+define('MEMBER_UPGRADED', 'Upgraded'); // DB attribute only
+/**
+ * @const user last launch date.
+ */
+define('MEMBER_LAST_LAUNCH_DATE', 'LastLaunchDate'); // DB attribute only
 
 
 
@@ -259,10 +304,31 @@ define('FACEBOOK_CALLBACK_URL', PUBLIC_BASE_URL . 'facebook_callback.php');
 */
 define('LOGOUT_URL', PUBLIC_BASE_URL . 'logout.php');
 /**
+ * @const admin console page.
+ */
+define('ADMIN_BASE_URL', PUBLIC_BASE_URL . 'webApp/admin-console/console.php');
+/**
+ * @const admin console login page.
+ */
+define('ADMIN_LOGIN_URL', PUBLIC_BASE_URL . 'webApp/admin-console/admin-login.php');
+/**
  * @const contact support email address.
  */
 define('CONTACT_SUPPORT_MAILTO_ADDRESS', 'support@photomyne.com');
 /**
- * @const mail 'From' name.
+ * @const contact support mail 'From' name.
  */
 define('CONTACT_SUPPORT_MAILTO_HEADER', 'From: webApp@photomyne.com');
+
+
+
+/************* Admin login ******************/
+/**
+ * @const admin login username.
+ */
+define('ADMIN_LOGIN_USERNAME', 'venice8floor1');
+/**
+ * @const admin login passowrd.
+ */
+define('ADMIN_LOGIN_PASSWORD', 'annathashuala');
+

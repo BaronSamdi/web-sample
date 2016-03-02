@@ -15,8 +15,8 @@ use UI\UIBuilder;
 
 error_reporting(E_ALL);
 
-$loginHelper;
-$user;
+$loginHelper = false;
+$user= false;
 
 if(isset($_SESSION['loginHelper'])){
 	$loginHelper =  unserialize($_SESSION['loginHelper']);
@@ -43,21 +43,6 @@ $ui_builder = new UIBuilder();
 $ui_builder->verify_is_album(filter_var($_GET['id'] ,FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH));
 
 ?>
-
-<!-- TBD impl & test auto ver -->
-<!-- ?php 
-
-function autoVer($url){
-	$path = pathinfo($url);
-	$ver = '.'.filemtime($_SERVER['DOCUMENT_ROOT'].$url).'.';
-	echo $path['dirname'].'/'.str_replace('.', $ver, $path['basename']);
-}
-
-include($_SERVER['DOCUMENT_ROOT'].'/path/to/autoVer.php');
-
-? -->
-<!-- link rel="stylesheet" href="<!-- ?php autoVer('/webApp/css/style.css'); ?>" type="text/css" />
-<script type="text/javascript" src="<!-- ?php autoVer('/scripts/prototype.js'); ?>"></script  -->
 
 
 <!DOCTYPE html>
@@ -110,11 +95,18 @@ include($_SERVER['DOCUMENT_ROOT'].'/path/to/autoVer.php');
 	href="webApp/css/font-awesome.min.css">
 	
 
+
+
+<link rel="shortcut icon" href="webApp/css/styleImages/favicon.png">
+<link rel="stylesheet" type="text/css" 
+	href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" />
 <!-- link rel='stylesheet' href='webApp/css/gallery.css' type='text/css' / -->	
 <link rel="stylesheet" type="text/css" href="webApp/css/magnific-popup.css" />	
 <link rel="stylesheet" type="text/css" href="webApp/css/style.css" />
-
-<script type='text/javascript' src='webApp/js/jquery-11.0.min.js'></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://www.photomyne.com/webApp/js/jquery-11.0.min.js"><\/\script>');</script>
 <script>
 function imgError(image) {
     image.onerror = "";
